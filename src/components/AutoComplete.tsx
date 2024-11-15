@@ -97,7 +97,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
       {selectedGame && (
         <Modal gameDetails={selectedGame} onClose={() => setSelectedGame(null)} />
       )}
-      <h4>Made by <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Jean Roa</a></h4>
+      <h4>Made by <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">Jean Roa</a></h4>
     </div>
   );
 };
