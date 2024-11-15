@@ -1,12 +1,27 @@
 // src/App.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AutoComplete from './components/AutoComplete';
+import './styles/loading.css';
+import './styles/globals.css'
 
 const App: React.FC = () => {
+  const [isLoadingInitial, setIsLoadingInitial] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoadingInitial(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="App">
-      <h1>AutoComplete Component with Game API</h1>
-      <AutoComplete />
+    <div className="app">
+      {isLoadingInitial ? (
+        <div className="loading-screen">Loading...</div>
+      ) : (
+        <AutoComplete />
+      )}
     </div>
   );
 };
