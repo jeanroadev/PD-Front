@@ -1,8 +1,7 @@
-// src/components/AutoComplete.tsx
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import '../styles/autocomplete.css';
-import '../styles/spinner.css'; // Importa los estilos del cargador
+import '../styles/spinner.css';
 
 interface AutoCompleteProps {
   placeholder?: string;
@@ -16,8 +15,8 @@ interface GameDetails {
 }
 
 interface Game {
+  id: number; // Agrega el ID para realizar la segunda llamada
   name: string;
-  description: string;
   released: string;
   background_image: string;
 }
@@ -56,17 +55,29 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
     return () => clearTimeout(debounceTimer);
   }, [inputValue]);
 
+  const fetchGameDetails = async (id: number) => {
+    try {
+      const response = await fetch(
+        `https://api.rawg.io/api/games/${id}?key=${process.env.REACT_APP_RAWG_API_KEY}`
+      );
+      const data = await response.json();
+      setSelectedGame({
+        name: data.name,
+        description: data.description || 'No description available',
+        released: data.released || 'Not available',
+        background_image: data.background_image || '',
+      });
+    } catch (error) {
+      console.error('Error fetching game details:', error);
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleGameClick = (game: Game) => {
-    setSelectedGame({
-      name: game.name,
-      description: game.description || 'No description available',
-      released: game.released || 'Not available',
-      background_image: game.background_image || '',
-    });
+    fetchGameDetails(game.id); // Llama a la función para obtener detalles
   };
 
   return (
@@ -97,7 +108,16 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
       {selectedGame && (
         <Modal gameDetails={selectedGame} onClose={() => setSelectedGame(null)} />
       )}
-      <h4>Made by <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">Jean Roa</a></h4>
+      <h4>
+        Made by{' '}
+        <a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Jean Roa
+        </a>
+      </h4>
     </div>
   );
 };
