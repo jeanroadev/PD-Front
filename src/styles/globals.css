@@ -10,6 +10,7 @@ body {
     background-image: url('../images/background.gif');
     background-repeat:no-repeat ;
     background-size: cover;
+    background-position: right;
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
