@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useEffect, useState } from 'react';
 import AutoComplete from './components/AutoComplete';
 import './styles/loading.css';

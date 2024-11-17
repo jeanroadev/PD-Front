@@ -15,7 +15,7 @@ interface GameDetails {
 }
 
 interface Game {
-  id: number; // Agrega el ID para realizar la segunda llamada
+  id: number;
   name: string;
   released: string;
   background_image: string;
@@ -77,7 +77,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
   };
 
   const handleGameClick = (game: Game) => {
-    fetchGameDetails(game.id); // Llama a la función para obtener detalles
+    fetchGameDetails(game.id);
   };
 
   return (

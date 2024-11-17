@@ -12,7 +12,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ gameDetails, onClose }) => {
-  if (!gameDetails) return null; // Si no hay detalles del juego, no renderizar el modal.
+  if (!gameDetails) return null;
 
 return (
     <div className="modal-overlay" onClick={onClose}>
