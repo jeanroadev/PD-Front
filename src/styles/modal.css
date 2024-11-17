@@ -26,6 +26,7 @@
 
   .modal-description {
     margin: 10px;
+    text-align: left;
   }
   
   .modal-description h3 {
