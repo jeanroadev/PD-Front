@@ -18,10 +18,8 @@
     max-width: 600px;
     text-align: center;
     min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-height: 80vh;
+    overflow-y:auto;
   }
 
   .modal-description {
@@ -29,9 +27,10 @@
     text-align: left;
   }
   
-  .modal-description h3 {
-    margin: 10px;
-    font-size: .9rem;
+  .modal-description h3, h2 {
+    margin: 10px 0;
+    font-size: 1rem;
+    font-family: "Press Start 2P", system-ui;
   }
   .close-btn {
     position: absolute;
@@ -51,8 +50,13 @@
     border-radius: 20px;
   }
 
-  .modal-content h2 {
+  .modal-content {
     font-size: 1.1rem;
+    font-family: 'Trajan Pro', serif;
+  }
+
+  .modal-content  {
+    font-size: .8rem;
   }
 
   .modal-content p {
